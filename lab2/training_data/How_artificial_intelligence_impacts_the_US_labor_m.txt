@@ -1,0 +1,99 @@
+TITLE: How artificial intelligence impacts the US labor market | MIT Sloan
+URL: https://mitsloan.mit.edu/ideas-made-to-matter/how-artificial-intelligence-impacts-us-labor-market
+
+open share links close share links
+
+**What you’ll learn:**
+
+  * AI adoption leads to increased company growth in revenue, profits, employment, and profitability.
+  * Exposure to AI is greatest in higher-paying roles that involve information processing and analysis.
+  * In the 2014 – 2023 period, AI-exposed roles did not experience job losses relative to other roles, due to offsetting factors.
+
+
+
+* * *
+
+Artificial intelligence is often portrayed as a job killer, but new research tracking AI adoption from 2010 to 2023 paints a more nuanced picture: AI’s impact is often on specific tasks within jobs rather than on whole occupations.
+
+A new study co-authored by MIT Sloan associate professor Lawrence Schmidt found that when AI can perform most of the tasks that make up a particular job, the share of people in that role within a company falls by about 14%.
+
+But when AI’s impact is concentrated in just a few tasks within a role — leaving other responsibilities untouched — employment in that role can grow. The reason? With some of their tasks automated, workers can focus on activities where AI is less capable, such as critical thinking or coming up with new ideas.
+
+Even workers in high-wage roles heavily exposed to AI — positions near the top of the pay scale — saw their share of total employment grow by about 3% over five years. That’s because AI boosted firm productivity: Companies that used the technology grew faster, which helped sustain or even expand head count in high-exposure positions.
+
+The takeaway for employers rolling the technology out to their workforce: “Firms that adopt AI don’t necessarily need to shed workers; they can grow and make more stuff and use workers more efficiently than other firms,” said Schmidt, an economist who studies how finance and the job market intersect.
+
+####### More about the methodology
+
+The team used advances in natural language processing to analyze the task requirements and work descriptions of about 58 million LinkedIn profiles and 14 million job postings.
+
+They compared them to roughly 20,000 work activities listed in O*NET, the U.S. Department of Labor’s database, identifying which tasks AI is most capable of performing. 
+
+They then calculated the average exposure for all of the tasks in each job and measured how evenly that exposure was distributed, showing whether AI could handle nearly every task in a role or only a few.
+
+Read more: Artificial Intelligence and the Labor Market
+
+Learn More Collapse
+
+The study, co-authored with Menaka Hampole of the Yale School of Management and Dimitris Papanikolaou and Bryan Seegmiller of Northwestern University’s Kellogg School of Management, used natural language processing to construct new measures of workers’ task-level exposure to AI and machine learning from 2010 to 2023, capturing variation across firms, occupations, and time.
+
+## **What happened to jobs — and why**
+
+As of December 2023, AI had not caused major changes in total employment. Losses in highly exposed roles were largely offset by gains in other jobs — and by hiring growth at firms that used AI to become more productive. But the findings predate the widespread rise of generative AI, which the authors note could shift such patterns in the future.
+
+The study also shows that companies can see substantial gains by putting AI to work — and that that growth translates into jobs. Firms that use AI extensively tend to be larger and more productive, and pay higher wages. They also grow faster: A large increase in AI use is linked to about 6% higher employment growth and 9.5% more sales growth over five years.
+
+## **Which jobs shrank — and which grew**
+
+The analysis shed light on who is most at risk from automation. The researchers found, perhaps surprisingly, that exposure to AI is greatest in high-paying roles, which often involve information processing and analysis — tasks that AI can already do well.
+
+That contrasts with earlier technology waves, such as computerization and factory automation in the 1980s through early 2000s, which — as previous research has shown — mainly displaced middle-skill, routine jobs, like clerical work and basic bookkeeping.
+
+**Jobs that shrank:**
+
+  * **Top-paying roles** **(like management analysts, aerospace engineers, and computer and information research scientists):** Employment within firms fell by about 3.5% over five years. These more lucrative roles are more likely to be in firms that adopt AI; the productivity gains that those firms realize more than offset the losses. As a result, the highest-paid jobs still make up a slightly bigger share of employment than those less exposed to AI.
+  * **Business, financial, architecture, and engineering jobs:** These shrank — by about 2% to 2.5% over five years — because they have a high share of tasks that match what AI can do. Among them, business and financial jobs are more exposed to AI than architecture and engineering roles, but they’re also more likely to be in firms that use AI heavily, which helps offset some of the losses.
+
+
+
+**Jobs that grew:**
+
+  * **Legal jobs:** These roles gained the most from AI. They face little direct impact from automation and are often in firms that use AI heavily, leading to a predicted 6.4% increase in employment.
+
+
+
+## Why even low-exposure jobs are at risk
+
+But not all low-exposure roles are safe. Even jobs with little direct impact from AI can shrink if their employers are slow to adopt the technology. The study found that food service jobs wilted relative to other jobs not because AI can do the work but because employers that don’t use AI grow more slowly, reducing demand for workers.
+
+Relatedly, workers who are in occupations involving tasks amenable to AI but work at employers that do not adopt AI are not necessarily better off, since their employers grow less rapidly than their AI-adopting peers.
+
+## **Generative AI could change the equation**
+
+However, the research reflects an earlier phase of AI adoption: The dataset runs up to 2023, so most of it predates the rapid rise of generative AI tools like ChatGPT, which launched in late 2022.
+
+According to Schmidt, it is still an open question as to whether the patterns seen so far will hold in the generative AI era. Because generative AI can learn from fewer examples, he said, it could take on a wider range of tasks, leaving fewer for humans to shift to.
+
+“It’s the million-dollar question,” he said. “Generative AI might reduce the gains from shifting work to people, but it could also make everyone more productive — a rising tide that lifts all boats.”
+
+## **What employers can do**
+
+For Schmidt, the results highlight how much management decisions can shape AI’s impact.
+
+“One of the important roles of firms in minimizing the displacements from AI is to really lean into task reallocation: Take your existing workforce, work with the AI, and make sure time is being reallocated toward tasks where people have a comparative advantage,” he said.
+
+The key is to embrace the technology in the right way, Schmidt said.
+
+“We shouldn’t be afraid of it,” he said. “We should learn how to use it and leverage those productivity gains — not as a substitute for things people are good at, like critical thinking and coming up with new ideas.”
+
+To help companies get the most out of AI, Schmidt outlined a few priorities for business leaders:
+
+  * **Encourage hands-on use.** Do not wait until AI is rolled out across the company; give employees the chance to try different tools now. Early, active use builds skills and confidence.
+  * **Pick the right tools and use them well.** Make sure teams choose the versions and features that fit the work, and use them often enough to see real gains.
+  * **Think beyond efficiency.** Use AI not only to save time on routine work but also to open up new possibilities, such as tackling complex problems or generating fresh ideas.
+
+
+
+* * *
+
+_**Lawrence Schmidt** __is an MIT Sloan applied economist working at the intersection of finance and macro-labor. His research examines fundamental risk factors that impact the value of human capital and the causes and consequences of imperfect risk-sharing in labor and financial markets. Schmidt’s research tackles these questions by a combination of quantitative models and empirical work, which leverages, and often creates, novel microeconomic datasets, advanced econometric methods, and cutting-edge tools for textual analysis._

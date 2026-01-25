@@ -1,0 +1,92 @@
+Detailed Summary of data_exploration.py
+
+Overview
+- Purpose: End‑to‑end data acquisition and analysis pipeline focused on AI/layoff‑related content. It downloads a Kaggle CSV, scrapes a small set of web articles, optionally reconstructs text from local PDFs, and then performs both structured (CSV) and unstructured (text) analyses with visualizations.
+- Output artifacts: A `training_data/` folder containing the downloaded CSV (`layoffs.csv`), scraped article text files, and any reconstructed PDF text files. Several plots are displayed interactively (matplotlib/seaborn), not saved to disk.
+
+Imports and Dependencies
+- Standard library: os, re, json (unused), shutil, time, collections.Counter.
+- Data/analysis: pandas, numpy.
+- Visualization: matplotlib.pyplot, seaborn.
+- Scraping/extraction: selenium + webdriver_manager, readability, html2text, kagglehub, pdfplumber.
+
+Global Configuration
+- DATA_DIR = "training_data". The directory is created at startup if it does not exist.
+
+Pipeline Structure
+The script defines three main stages and then executes them in order:
+1) Data acquisition from Kaggle and the web
+2) Deep analysis of CSV and text corpus
+3) PDF reconstruction from local files
+
+1) Data Acquisition
+A. run_kaggle_step()
+- Downloads dataset `swaptr/layoffs-2022` via kagglehub.
+- Locates `layoffs.csv` inside the kagglehub cache and copies it into `training_data/layoffs.csv`.
+- Wraps the download in a try/except and prints any Kaggle error to the console.
+
+B. run_scraper_step()
+- Scrapes four predefined URLs related to AI’s impact on labor markets and tech layoffs.
+- Uses Selenium Chrome in headless mode; disables AutomationControlled blink features.
+- For each URL:
+  - Loads the page, waits 3 seconds for JS to settle.
+  - Extracts the “main content” using readability.Document on the page source.
+  - Converts the HTML summary into markdown‑like text via html2text (links ignored, no wrapping).
+  - Builds a safe filename from the article title (non‑word chars replaced with `_`, truncated to 50 chars) and writes a text file with TITLE, URL, and cleaned content.
+- Always quits the browser at the end.
+
+2) Analysis Engine (run_analysis_step)
+A. Structured CSV Analysis
+- Reads `training_data/layoffs.csv` if it exists.
+- Prints:
+  - Top 10 rows as a quick preview.
+  - Record count and feature count.
+- Outlier detection (if column `total_laid_off` exists):
+  - Computes mean and standard deviation, flags records > mean + 3*std as “Extreme Layoff Events.”
+- Visualizations:
+  - Top 10 industries by count using seaborn countplot.
+  - Correlation heatmap for numeric columns using seaborn heatmap.
+- Notes:
+  - Plots are shown interactively via `plt.show()` and are not saved.
+
+B. Unstructured Text Analysis
+- Reads all `.txt` files in `training_data/` (includes scraped articles and any reconstructed PDFs).
+- For each file, computes:
+  - Word count.
+  - Lexical richness (unique words / total words).
+  - Average sentence complexity (words per sentence based on splitting by punctuation).
+- Outputs a dataframe with per‑file stats to the console.
+- Keyword density:
+  - Counts occurrences of target keywords: ai, intelligence, automation, layoffs, jobs, labor, growth.
+- “Global themes” bar chart:
+  - Filters tokens by a small stop‑word list and length > 3.
+  - Plots top 10 most common tokens.
+
+3) PDF Reconstruction (process_pdfs_in_folder)
+- Searches the current working directory (not DATA_DIR) for `.pdf` files.
+- For each PDF:
+  - Uses pdfplumber to extract text from each page.
+  - Writes a reconstructed text file to `training_data/` with `_reconstructed.txt` suffix.
+- If no PDFs are present, prints a message and exits this stage.
+
+Execution Flow (main)
+- When run as a script:
+  1) Records start time and prints “STARTING A PIPELINE”.
+  2) run_kaggle_step()
+  3) run_scraper_step()
+  4) process_pdfs_in_folder()
+  5) run_analysis_step()
+  6) Prints total elapsed time.
+
+Notable Behaviors and Assumptions
+- The scraper uses a fixed 3‑second wait; pages with heavy JS may need longer or smarter waits.
+- The script assumes Chrome is available and that webdriver_manager can download a compatible driver.
+- The Kaggle download uses kagglehub and expects network access and proper Kaggle authentication if required.
+- Text analysis treats all `.txt` in `training_data/` as corpus content (including PDF reconstructions).
+- Several imports (json) are currently unused.
+
+Artifacts Produced
+- `training_data/layoffs.csv`
+- `training_data/<article_title>.txt` for each scraped URL
+- `training_data/<pdfname>_reconstructed.txt` for each local PDF
+- Interactive plots displayed in the current session
