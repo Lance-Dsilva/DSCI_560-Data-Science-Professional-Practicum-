@@ -1,0 +1,214 @@
+DSCI 560 – Data Science Professional Practicum
+Lab-2: Impact of Artificial Intelligence on Employment and Labor
+Markets
+Team Details
+Team Name: ILR
+Member 1 – Lance Vijil Dsilva USC ID: 3824765644
+Member 2 - Rafayel Mirijanyan– USC ID: 3487192016
+Member 3 - Isabella Yoo – USC ID: 1305966908
+Demo Video
+Demo video link will be provided.
+GitHub Repository
+https://github.com/Lance-Dsilva/DSCI_560-Data-Science-Professional-Practicum-/tree/main/lab
+2
+Objective
+Artificial Intelligence (AI) is rapidly transforming labor markets across industries. While AI
+drives productivity and innovation, it also raises concerns about job displacement, skill gaps, and
+workforce restructuring. Understanding the real-world impact of AI on employment requires
+analyzing data from multiple sources, including structured datasets, reports, and online
+publications.
+The objective of this project is to collect, extract, and organize employment related data from
+heterogeneous sources (CSV, PDF, and HTML) to support future analysis on how AI affects
+jobs, layoffs, and workforce trends.
+Domain Selection & Team Decision
+1. Individual Shortlisted Options
+Each team member proposed a distinct domain based on data availability and potential use cases:
+● Lance (Healthcare/Medical): Proposed focusing on clinical data and medical trends.
+○ Reasoning: High impact, but potential challenges with data privacy (HIPAA) and
+sensitive information.
+Dataset: Weekly Hospital Respiratory Data (HRD) Metrics by Jurisdiction, National
+Healthcare Safety Network (NHSN)
+https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metric
+s-by-Ju/ua7e-t2fy/data_preview
+CDC RESP-NET dashboard (COVID / Flu / RSV hospitalization rates by age, state,
+season)
+https://www.cdc.gov/fluview/surveillance/2026-week-01.html
+CDC FluView weekly surveillance report (weekly updated page with key stats)
+https://www.cdc.gov/fluview/surveillance/2026-week-01.html
+Reuters: Flu cases rise across U.S. as holiday travel fuels spread
+https://www.reuters.com/business/healthcare-pharmaceuticals/flu-cases-rise-across-us-holi
+day-travel-fuels-spread-2025-12-31/
+● Isabella (Project Management): Suggested analyzing organizational workflows and
+efficiency.
+○ Reasoning: Practical for corporate services, but data is often proprietary and
+difficult to find in public repositories.
+CSV: Project Management DataSet Example, containing project name, status, priority, and task
+id in a structured data format. This dataset represents the state and progress of collaborative
+projects. It supports the AI assistant’s ability to filter tasks or projects by their priority or pending
+status.
+ASCII: Enron Email Dataset. Although Enron Email Dataset is distributed in CSV format, the
+actual email contents with subject and bodies are in ASCII text stored within the same column.
+Extracted text contents from the file will serve as examples of real-world, professional
+communication logs among team members. This dataset helps the AI assistant learn how to
+perform natural language processing in the group chat or private messages and identify key
+information from the plain texts.
+PDF: Guidelines for Project Proposals. Project guideline and description often described in a pdf
+file in an academic environment. It supports the AI assistant’s ability to summarize key tasks
+and requirements in the project, generate possible milestones, or alarm users about deadlines.
+● Rafayel (AI & Workforce Dynamics): Proposed datasets covering employment trends,
+tech layoffs, and the influence of automation.
+○ Reasoning: Highly relevant to the current tech climate with a vast amount of
+publicly available structured and unstructured data.
+Dataset: In further section
+Describe what might be
+missing in these existing chatbots. Discuss how your dataset might improve the overall
+performance and correctness.
+2. Final Selection: Artificial Intelligence and Labor Markets
+The team reached a consensus to focus on the AI and Employment domain. This decision was
+based on several strategic factors:
+● Data Diversity: The domain allows for a robust pipeline that handles multiple formats:
+○ Structured: Global layoff metrics (CSV).
+○ Semi-Structured: Academic research papers and reports (PDF).
+○ Unstructured: Real-time news articles and forum discussions (HTML).
+● Relevance to Final Project: This domain provides the "Knowledge Base" necessary for
+the group’s final AI agent. It enables the agent to answer complex student queries
+regarding job trends, skills demand, and market shifts.
+Describe what might be missing in these existing chatbots. Discuss how your dataset might
+improve the overall performance and correctness
+Many existing chatbots have limited usefulness because they rely on generic training data, lack
+strong context retention, and are not grounded in real-world, domain-specific information. As a
+result, they often produce vague or outdated answers that users may not trust.
+Our dataset improves chatbot performance by providing structured, authoritative, and
+up-to-date data focused on AI and employment. By grounding responses in real layoff statistics,
+industry trends, and expert reports, a chatbot built on this dataset can deliver more accurate,
+contextual, and reliable answers to student questions, improving both correctness and user
+confidence.
+● Technical Suitability: The availability of APIs (Kaggle) and scrapeable research (MIT,
+Yale) makes it ideal for demonstrating data acquisition and cleaning techniques required
+for the lab.
+Datasets
+A) CSV Dataset – Tech Layoffs
+Source: Kaggle
+Link: https://www.kaggle.com/datasets/swaptr/layoffs-2022
+This dataset contains global layoff information across companies, industries, locations, and time
+periods. It provides structured numerical data to analyze employment trends.
+B) PDF Dataset – Future of Jobs Report 2025
+Source: World Economic Forum
+Link: https://www.weforum.org/publications/the-future-of-jobs-report-2025/
+This report provides global insights on job creation, displacement, skill demand, and the impact
+of AI and automation on the workforce.
+C) HTML Datasets – Web Articles
+1. https://www.adpresearch.com/yes-ai-is-affecting-employment-heres-the-data/
+2. https://news.crunchbase.com/startups/tech-layoffs/
+3.
+https://mitsloan.mit.edu/ideas-made-to-matter/how-artificial-intelligence-impacts-us-labor-marke
+t
+4. https://budgetlab.yale.edu/research/evaluating-impact-ai-labor-market-current-state-affairs
+These sources provide qualitative insights and recent analysis on AI-driven employment trends.
+Implementation
+A) CSV Data Extraction
+● Acquisition: Programmatically fetched the layoffs-2022 dataset using the
+kagglehub API.
+● Localization: Utilized shutil to move the CSV from the system cache into a
+dedicated training_data/ directory for environment portability.
+● Parsing: Loaded the dataset into Pandas and used .head(10) to sample and
+verify column alignment (Company, Industry, Date).
+● Outlier Logic: Calculated the Z-score on the total_laid_off column to identify and
+flag extreme layoff events that could skew statistical results.
+● Filtering: Used select_dtypes(include=[np.number]) to isolate numerical features
+for correlation heatmaps and mathematical operations.
+B) PDF Text Extraction (World Economic Forum Report)
+To extract text from the Future of Jobs Report 2025, we implemented a column-aware PDF
+extraction pipeline using the pdfplumber library. Since the report follows a two-column layout,
+a standard line-by-line extraction would merge unrelated text across columns. To address this,
+the script reconstructs the logical reading order by leveraging word-level positional metadata.
+The extraction process groups words into lines based on vertical alignment and then separates
+content into left, right, and full-width sections using horizontal gap detection. This allows the
+script to correctly read full-width headings first, followed by left and right columns in sequence.
+Additional heuristics were applied to remove repeated headers and footers, merge hyphenated
+words split across lines, and preserve paragraph structure.
+The extracted output is saved in two formats:
+1. A plain text file containing human-readable page-by-page content
+2. A JSONL file storing structured text along with page-level metadata
+This approach ensures accurate reconstruction of multi-column PDF text and produces clean,
+logically ordered data suitable for downstream analysis.
+B) Web data Text Extraction using Web scraping
+● We used Selenium in headless mode to render JavaScript-heavy research sites (like MIT
+Sloan) that traditional scrapers cannot read, allowing the pipeline to capture data
+that only appears after a page fully loads.
+● By disabling the AutomationControlled flag, the script hides the digital signature
+that identifies it as a bot; this allows the scraper to mimic a standard human
+browser and avoid being blocked by security filters.
+● The implementation uses readability-lxml to act as a "Reader Mode" for the code,
+algorithmically stripping away non-essential elements like advertisements,
+sidebars, and navigation menus to isolate the core article text.
+● We employed html2text to convert complex HTML into clean Markdown-style
+ASCII, which preserves document structure (like headers and lists) while
+removing redundant tags that would otherwise waste AI processing tokens.
+● This multi-stage distillation process ensures that the final dataset is composed of
+high-density information, providing a "clean" and structured foundation for
+training an AI agent without the interference of website "fluff."
+Pipeline Execution and Data Results
+The script data_exploration.py was executed in a terminal environment to perform a
+complete end-to-end data acquisition and analysis workflow. The execution successfully
+processed structured CSV data, dynamic web content, and local PDF documentation.
+Data Acquisition: The pipeline initialized by downloading the layoffs.csv dataset from
+Kaggle and storing it in a local directory. It then utilized a headless Selenium browser to
+scrape four high-authority web sources, including MIT Sloan and Yale Budget Lab,
+converting them into clean text files.
+PDF Reconstruction: A local PDF titled WEF_Future_of_Jobs_Report_2025.pdf was
+processed and successfully converted into a standardized text format for the training
+corpus.
+Structured Analysis (CSV): The system analyzed a dataset containing 4,268 records
+and 11 features. A preview of the top 10 rows revealed recent 2026 data from
+companies such as Meta, Ericsson, and Polygon. Statistical filtering identified 37
+"Extreme Layoff Events" based on Z-score logic.
+Unstructured Analysis (NLP): A linguistic audit was performed across the text corpus.
+The reconstructed World Economic Forum report was the most significant contributor,
+with a word count of 136,395 and an average sentence complexity of 49.49.
+Keyword Insights: Targeted density analysis showed a strong domain focus, with 'ai'
+(1,147 occurrences), 'growth' (997 occurrences), and 'jobs' (809 occurrences) emerging
+as the primary thematic drivers.
+Data Storage
+The script utilizes a single global configuration, DATA_DIR = "training_data", to house
+all project artifacts. This directory is automatically created at startup to ensure a
+consistent environment. It contains three primary types of files:
+1. Structured Data (CSV)
+● layoffs.csv: This is the primary dataset downloaded from Kaggle.
+● Purpose: It serves as the "immutable" raw data source for the analysis engine to
+calculate layoff trends, industry distribution, and numerical correlations.
+2. Unstructured Scraped Text (.txt)
+● Article Files: Each web article scraped by the Selenium engine is saved as a
+separate text file.
+● Naming Convention: Filenames are generated using a "safe filename" logic
+sanitizing the article title by replacing non word characters with underscores and
+truncating them to 50 characters for OS compatibility.
+● Internal Content: Each file contains the article title, the source URL, and the
+cleaned "main content" extracted via the readability engine.
+3. Reconstructed PDF Text (_reconstructed.txt)
+● PDF to Text: Files ending in _reconstructed.txt are created during the PDF
+reconstruction stage.
+● Source: These are generated from local .pdf files found in the working directory
+using pdfplumber to extract text page-by-page.
+Data Analysis
+The Top Affected Industries chart ranks industries by layoff frequency, showing that
+sectors such as Finance, Retail, and Healthcare experience the highest number of
+layoff events. This provides a clear overview of where workforce disruptions are most
+concentrated.
+The analysis highlights key patterns in both the textual and numerical data. The Top
+Content Themes visualization shows that terms related to skills, talent, jobs, and
+transformation dominate the text corpus, confirming a strong focus on workforce change
+driven by artificial intelligence. This aligns well with the project’s goal of building an AI
+chatbot capable of answering student questions about AI and employment.
+Finally, the Feature Correlation Matrix reveals weak correlations between total layoffs,
+percentage laid off, and funds raised, indicating that layoffs are not driven by a single
+financial factor. Together, these results demonstrate that the datasets capture both
+thematic context and quantitative trends, making them suitable for a question-answering
+AI agent focused on labor market insights.
+Output
+On execution, the scripts successfully extracted structured and unstructured data from all
+sources. Extracted data was stored locally and verified through console logs.
+Individual Contributions
+Member 1: CSV data extraction and exploration, Web scraping implementation
+Member 2: PDF text extraction and data organization
+Member 3: report creation, data exploration
